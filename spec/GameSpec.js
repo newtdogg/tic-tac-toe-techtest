@@ -1,12 +1,39 @@
 describe("Game", function(){
 
   var game;
+  var player1;
+  var player2;
 
   beforeEach(function() {
-    game = new Game
+    player1 = jasmine.createSpyObj('player1', ['nothing'])
+    player2 = jasmine.createSpyObj('player2', ['nothing'])
+    game = new Game(player1, player2)
   });
 
-  it("should start the game with a board", function(){
-    expect(game.board).toEqual([[null, null, null], [null, null, null], [null, null, null]])
+  describe("should start", function(){
+
+    it("with a board", function(){
+      expect(game.board).toEqual([[null, null, null], [null, null, null], [null, null, null]])
+    })
+
+    it("on turn 1", function(){
+      expect(game.turn).toEqual(1)
+    })
+
+    it("with player 1", function(){
+      expect(game.player1).not.toBeNull();
+    })
+
+    it("with player 2", function(){
+      expect(game.player2).not.toBeNull();
+    })
+  })
+
+  describe("on playing", function(){
+
+    it("the turn count should increase when a player takes a turn", function(){
+      game.playersTurn(player1, 1, 2)
+      expect(game.turn).toEqual(2)
+    })
   })
 })
