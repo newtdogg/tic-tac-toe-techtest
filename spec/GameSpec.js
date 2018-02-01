@@ -9,9 +9,10 @@ describe("Game", function(){
     player1 = jasmine.createSpyObj('player1', ['nothing'])
     player2 = jasmine.createSpyObj('player2', ['nothing'])
     cell = {value: "X"}
-    game = new Game(player1, player2)
-    board = jasmine.createSpyObj('board', ['grid'])
+    board = jasmine.createSpyObj('board', ['grid', 'winner'])
+    game = new Game(player1, player2, board)
   });
+
 
   describe("should start", function(){
 
@@ -47,16 +48,13 @@ describe("Game", function(){
       game.playersTurn(1, 2, cell)
       expect(game.turn).toEqual("O")
     })
-
-    it("a player can not position their O or X or a previously used square", function(){
-      game.playersTurn(1, 2, cell)
-      expect(function() {game.playersTurn(1, 2, cell)}).toThrowError("square unavailable")
-    })
   })
 
   describe("ends if", function(){
     it("a player claims all the fields in a row, column or diagonal", function(){
-
+      game.board.winner = true
+      game.ended()
+      expect(game.gameOver).toBe(true)
     })
   })
 })
