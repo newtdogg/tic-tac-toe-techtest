@@ -17,7 +17,7 @@ describe("Game", function(){
     })
 
     it("on turn 1", function(){
-      expect(game.turn).toEqual(1)
+      expect(game.turnCount).toEqual(1)
     })
 
     it("with player 1", function(){
@@ -27,13 +27,22 @@ describe("Game", function(){
     it("with player 2", function(){
       expect(game.player2).not.toBeNull();
     })
+
+    it("on Player 1's turn", function(){
+      expect(game.turn).toEqual("X")
+    })
   })
 
   describe("on playing", function(){
 
     it("the turn count should increase when a player takes a turn", function(){
-      game.playersTurn(player1, 1, 2)
-      expect(game.turn).toEqual(2)
+      game.playersTurn(1, 2)
+      expect(game.turnCount).toEqual(2)
+    })
+
+    it("the turn should switch to the other player", function(){
+      game.playersTurn(1, 2)
+      expect(game.turn).toEqual("O")
     })
   })
 })

@@ -2,7 +2,7 @@
 
 ### Rules
 
-- [ ] There are two players in the game (X and O)
+- [x] There are two players in the game (X and O)
 - [ ] Players take turns until the game is over
 - [ ] A player can claim a field if it is not already taken
 - [ ] A turn ends when a player claims a field
@@ -22,6 +22,12 @@ I would like to be able to interact with a 3x3 grid
 As a player,
 In order to play tic-tac-toe,
 I would like to place a O or X on the grid
+```
+
+```
+As Player 1,
+So I can start the game,
+I should have the first turn
 ```
 
 ```

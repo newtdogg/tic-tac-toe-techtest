@@ -1,10 +1,16 @@
 function Game(player1, player2){
   this.board = [[null, null, null], [null, null, null], [null, null, null]]
-  this.turn = 1
+  this.turnCount = 1
+  this.turn = "X"
   this.player1 = player1
   this.player2 = player2
 }
 
-Game.prototype.playersTurn = function (player, x, y) {
-  this.turn += 1
+Game.prototype.playersTurn = function (x, y) {
+  this.turnCount += 1
+  this.changeTurn()
+};
+
+Game.prototype.changeTurn = function () {
+  this.turn === "X" ? this.turn = "O" : this.turn = "X"
 };
