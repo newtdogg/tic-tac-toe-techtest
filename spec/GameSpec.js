@@ -10,12 +10,13 @@ describe("Game", function(){
     player2 = jasmine.createSpyObj('player2', ['nothing'])
     cell = {value: "X"}
     game = new Game(player1, player2)
+    board = jasmine.createSpyObj('board', ['grid'])
   });
 
   describe("should start", function(){
 
     it("with a board", function(){
-      expect(game.board).toEqual([[null, null, null], [null, null, null], [null, null, null]])
+      expect(game.board).not.toBeNull();
     })
 
     it("on turn 1", function(){
@@ -45,11 +46,6 @@ describe("Game", function(){
     it("the turn should switch to the other player", function(){
       game.playersTurn(1, 2, cell)
       expect(game.turn).toEqual("O")
-    })
-
-    it("the board should store the value of the cell", function(){
-      game.playersTurn(1, 2, cell)
-      expect(game.board[1][2].value).toEqual("X")
     })
 
     it("a player can not position their O or X or a previously used square", function(){

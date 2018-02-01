@@ -1,5 +1,5 @@
 function Game(player1, player2){
-  this.board = [[null, null, null], [null, null, null], [null, null, null]]
+  this.board = new Board
   this.turnCount = 1
   this.turn = "X"
   this.player1 = player1
@@ -7,10 +7,10 @@ function Game(player1, player2){
 }
 
 Game.prototype.playersTurn = function (x, y, cell = new Cell(this.turn)) {
-  if(this.board[x][y] != null){
+  if(this.board.grid[x][y] != null){
     throw new TypeError("square unavailable")
   } else {
-    this.board[x][y] = cell
+    this.board.store(x, y)
     this.turnCount += 1
     this.changeTurn()
   }
