@@ -7,9 +7,13 @@ function Game(player1, player2){
 }
 
 Game.prototype.playersTurn = function (x, y, cell = new Cell(this.turn)) {
-  this.board[x][y] = cell
-  this.turnCount += 1
-  this.changeTurn()
+  if(this.board[x][y] != null){
+    throw new TypeError("square unavailable")
+  } else {
+    this.board[x][y] = cell
+    this.turnCount += 1
+    this.changeTurn()
+  }
 };
 
 Game.prototype.changeTurn = function () {

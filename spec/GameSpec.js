@@ -38,18 +38,29 @@ describe("Game", function(){
   describe("on playing", function(){
 
     it("the turn count should increase when a player takes a turn", function(){
-      game.playersTurn(1, 2)
+      game.playersTurn(1, 2, cell)
       expect(game.turnCount).toEqual(2)
     })
 
     it("the turn should switch to the other player", function(){
-      game.playersTurn(1, 2)
+      game.playersTurn(1, 2, cell)
       expect(game.turn).toEqual("O")
     })
 
     it("the board should store the value of the cell", function(){
       game.playersTurn(1, 2, cell)
       expect(game.board[1][2].value).toEqual("X")
+    })
+
+    it("a player can not position their O or X or a previously used square", function(){
+      game.playersTurn(1, 2, cell)
+      expect(function() {game.playersTurn(1, 2, cell)}).toThrowError("square unavailable")
+    })
+  })
+
+  describe("ends if", function(){
+    it("a player claims all the fields in a row, column or diagonal", function(){
+
     })
   })
 })
