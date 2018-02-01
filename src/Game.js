@@ -6,7 +6,8 @@ function Game(player1, player2){
   this.player2 = player2
 }
 
-Game.prototype.playersTurn = function (x, y) {
+Game.prototype.playersTurn = function (x, y, cell = new Cell(this.turn)) {
+  this.board[x][y] = cell
   this.turnCount += 1
   this.changeTurn()
 };

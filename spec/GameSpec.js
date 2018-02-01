@@ -1,12 +1,14 @@
 describe("Game", function(){
 
   var game;
+  var cell;
   var player1;
   var player2;
 
   beforeEach(function() {
     player1 = jasmine.createSpyObj('player1', ['nothing'])
     player2 = jasmine.createSpyObj('player2', ['nothing'])
+    cell = {value: "X"}
     game = new Game(player1, player2)
   });
 
@@ -43,6 +45,11 @@ describe("Game", function(){
     it("the turn should switch to the other player", function(){
       game.playersTurn(1, 2)
       expect(game.turn).toEqual("O")
+    })
+
+    it("the board should store the value of the cell", function(){
+      game.playersTurn(1, 2, cell)
+      expect(game.board[1][2].value).toEqual("X")
     })
   })
 })
