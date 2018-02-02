@@ -3,11 +3,11 @@
 ### Rules
 
 - [x] There are two players in the game (X and O)
-- [ ] Players take turns until the game is over
+- [x] Players take turns until the game is over
 - [x] A player can claim a field if it is not already taken
 - [x] A turn ends when a player claims a field
-- [ ] A player wins if they claim all the fields in a row, column or diagonal
-- [ ] A game is over if a player wins
+- [x] A player wins if they claim all the fields in a row, column or diagonal
+- [x] A game is over if a player wins
 - [ ] A game is over when all fields are taken
 
 ### User Stories
@@ -65,3 +65,9 @@ As a player,
 So that the game can end,
 The game ends when all squares are filled
 ```
+
+### Difficulties
+
+- When moving functionality into different classes I needed to be more methodological as I was loosing track of what was being tested where. Need to be more pragmatic when doing this.
+- Didn't commit enough when I was applying SRP to the code and making new classes
+- Need to be careful where I put different functionality

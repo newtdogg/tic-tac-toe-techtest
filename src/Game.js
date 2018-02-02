@@ -9,7 +9,7 @@ function Game(player1, player2, board = new Board){
 
 Game.prototype.playersTurn = function (x, y) {
   this.board.store(x, y, this.turn)
-  this.turnCount += 1
+  this.nextTurn()
   this.changeTurn()
 };
 
@@ -20,3 +20,7 @@ Game.prototype.changeTurn = function () {
 Game.prototype.ended = function () {
   this.board.winner != null ? this.gameOver = true : this.gameOver = false
 }
+
+Game.prototype.nextTurn = function () {
+  this.turnCount += 1
+};

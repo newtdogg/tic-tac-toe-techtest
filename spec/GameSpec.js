@@ -40,7 +40,7 @@ describe("Game", function(){
   describe("on playing", function(){
 
     it("the turn count should increase when a player takes a turn", function(){
-      game.playersTurn(1, 2, cell)
+      game.nextTurn()
       expect(game.turnCount).toEqual(2)
     })
 
