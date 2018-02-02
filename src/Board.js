@@ -11,25 +11,19 @@ Board.prototype.store = function (x, y, player) {
   } else {
     this.grid[x][y].inputValue(player)
   }
-  is
+  isGameWon()
 };
 
 Board.prototype.isGameWon = function (player) {
-  if ((this.grid[0][0].value === player) && (this.grid[0][1].value === player) && (this.grid[0][2].value === player)){
-    this.winner = player
-  } else if ((this.grid[0][0].value === player) && (this.grid[1][0].value === player) && (this.grid[2][0].value === player)) {
-    this.winner = player
-  } else if ((this.grid[1][0].value === player) && (this.grid[1][1].value === player) && (this.grid[1][2].value === player)) {
-    this.winner = player
-  } else if ((this.grid[2][0].value === player) && (this.grid[2][1].value === player) && (this.grid[2][2].value === player)) {
-    this.winner = player
-  } else if ((this.grid[0][1].value === player) && (this.grid[1][1].value === player) && (this.grid[2][1].value === player)) {
-    this.winner = player
-  } else if ((this.grid[0][2].value === player) && (this.grid[1][2].value === player) && (this.grid[2][2].value === player)) {
-    this.winner = player
-  } else if ((this.grid[0][0].value === player) && (this.grid[1][1].value === player) && (this.grid[2][2].value === player)) {
-    this.winner = player
-  } else if ((this.grid[0][2].value === player) && (this.grid[1][1].value === player) && (this.grid[2][0].value === player)) {
-    this.winner = player
+  for (var i = 0; i < 2; i++){
+    if (this.grid[i][0].value === this.grid[i][1].value && this.grid[i][1].value === this.grid[i][2].value){
+        this.winner = player
+    } else if (this.grid[0][i].value === this.grid[1][i].value && this.grid[1][i].value === this.grid[2][i].value) {
+        this.winner = player
+    } else if (this.grid[0][0].value === this.grid[1][1].value && this.grid[1][1].value === this.grid[2][2].value) {
+        this.winner = player
+    } else if (this.grid[0][2].value === this.grid[1][1].value && this.grid[1][1].value === this.grid[2][0].value) {
+        this.winner = player
+    }
   }
-};
+}

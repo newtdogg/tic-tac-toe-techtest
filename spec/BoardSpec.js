@@ -6,6 +6,7 @@ describe("Board", function(){
   beforeEach(function() {
     board = new Board("x")
     cell = jasmine.createSpyObj('cell', ['inputValue', 'value'])
+    o = jasmine.createSpyObj('cell', ['inputValue', 'value'])
     cell.value = "X"
   });
 
@@ -31,72 +32,80 @@ describe("Board", function(){
 
   it("the board should calculate whether a player has won by filling the top row", function(){
     board = new Board(cell)
-    board.grid = [["X", "X", "X"],
-                 [cell, cell, cell],
-                 [cell, cell, cell]]
+    o.value = "O"
+    board.grid = [[cell, cell, cell],
+                 [o, o, cell],
+                 [cell, o, o]]
     board.isGameWon("X")
     expect(board.winner).toEqual("X")
   })
 
   it("the board should calculate whether a player has won by filling the middle row", function(){
     board = new Board(cell)
-    board.grid = [[cell, cell, cell],
-                  ["X", "X", "X"],
-                  [cell, cell, cell]]
+    o.value = "O"
+    board.grid = [[o, cell, o],
+                  [cell, cell, cell],
+                  [cell, o, o]]
     board.isGameWon("X")
     expect(board.winner).toEqual("X")
   })
 
   it("the board should calculate whether a player has won by filling the bottom row", function(){
     board = new Board(cell)
-    board.grid = [[cell, cell, cell],
-                  [cell, cell, cell],
-                  ["X", "X", "X"]]
+    o.value = "O"
+    board.grid = [[cell, o, o],
+                  [o, o, cell],
+                  [cell, cell, cell]]
     board.isGameWon("X")
     expect(board.winner).toEqual("X")
   })
 
   it("the board should calculate whether a player has won by filling the first vertical row", function(){
     board = new Board(cell)
-    board.grid = [["X", cell, cell],
-                  ["X", cell, cell],
-                  ["X", cell, cell]]
+    o.value = "O"
+    board.grid = [[cell, o, o],
+                  [cell, o, cell],
+                  [cell, cell, o]]
     board.isGameWon("X")
     expect(board.winner).toEqual("X")
   })
 
   it("the board should calculate whether a player has won by filling the second vertical row", function(){
     board = new Board(cell)
-    board.grid = [[cell, "X", cell],
-                  [cell, "X", cell],
-                  [cell, "X", cell]]
+    o.value = "O"
+    board.grid = [[o, cell, cell],
+                  [cell, cell, o],
+                  [o, cell, o]]
     board.isGameWon("X")
     expect(board.winner).toEqual("X")
   })
 
   it("the board should calculate whether a player has won by filling the third vertical row", function(){
     board = new Board(cell)
-    board.grid = [[cell, cell, "X"],
-                  [cell, cell, "X"],
-                  [cell, cell, "X"]]
+    o.value = "O"
+    board.grid = [[o, cell, cell],
+                  [o, o, cell],
+                  [cell, o, cell]]
     board.isGameWon("X")
     expect(board.winner).toEqual("X")
   })
 
   it("the board should calculate whether a player has won by filling the diagonal", function(){
     board = new Board(cell)
-    board.grid = [["X", cell, cell],
-                  [cell, "X", cell],
-                  [cell, cell, "X"]]
+    o.value = "O"
+    board.grid = [[cell, o, o],
+                  [o, cell, o],
+                  [o, o, cell]]
     board.isGameWon("X")
     expect(board.winner).toEqual("X")
   })
 
   it("the board should calculate whether a player has won by filling the diagonal", function(){
     board = new Board(cell)
-    board.grid = [[cell, cell, "X"],
-                  [cell, "X", cell],
-                  ["X", cell, cell]]
+    o.value = "O"
+    board.grid = [[o, o, cell],
+                  [o, cell, o],
+                  [cell, o, o]]
     board.isGameWon("X")
     expect(board.winner).toEqual("X")
   })
