@@ -9,7 +9,7 @@ describe("Game", function(){
     player1 = jasmine.createSpyObj('player1', ['nothing'])
     player2 = jasmine.createSpyObj('player2', ['nothing'])
     cell = {value: "X"}
-    board = jasmine.createSpyObj('board', ['grid', 'winner'])
+    board = jasmine.createSpyObj('board', ['grid', 'winner', 'store', 'isGameWon'])
     game = new Game(player1, player2, board)
   });
 

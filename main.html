@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+
+  <!-- include source files here... -->
+  <script src="src/Player.js"></script>
+  <script src="src/Game.js"></script>
+  <script src="src/Cell.js"></script>
+  <script src="src/Board.js"></script>
+  <link <link rel="stylesheet" href="main.css">
+  <script>
+    game = new Game("X", "O")
+  </script>
+
+</head>
+<body>
+  <div class="grid">
+    <div class="row">
+      <div class="cell" onclick="game.playersTurn(0, 0)"></div>
+      <div class="cell" onclick="game.playersTurn(0, 1)"></div>
+      <div class="cell" onclick="game.playersTurn(0, 2)"></div>
+    </div>
+    <div class="row">
+      <div class="cell" onclick="game.playersTurn(1, 0)"></div>
+      <div class="cell" onclick="game.playersTurn(1, 1)"></div>
+      <div class="cell" onclick="game.playersTurn(1, 2)"></div>
+    </div>
+    <div class="row">
+      <div class="cell" onclick="game.playersTurn(2, 0)"></div>
+      <div class="cell" onclick="game.playersTurn(2, 1)"></div>
+      <div class="cell" onclick="game.playersTurn(2, 2)"></div>
+    </div>
+  </div>
+</body>

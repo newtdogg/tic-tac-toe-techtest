@@ -10,8 +10,13 @@ function Game(player1, player2, board = new Board){
 Game.prototype.playersTurn = function (x, y) {
   this.board.store(x, y, this.turn)
   this.nextTurn()
-  board.isGameWon(this.turn)
-  this.changeTurn()
+  this.board.isGameWon(this.turn)
+  if (this.gameOver === null){
+    this.changeTurn()
+  }
+  console.log(this.turnCount)
+  console.log(this.board)
+  console.log(this.turn)
 };
 
 Game.prototype.changeTurn = function () {

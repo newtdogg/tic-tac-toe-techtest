@@ -1,17 +1,17 @@
-function Board(c = new Cell){
-  this.grid = [[c, c, c],
-               [c, c, c],
-               [c, c, c]]
+function Board(){
+  this.grid = [[new Cell, new Cell, new Cell],
+               [new Cell, new Cell, new Cell],
+               [new Cell, new Cell, new Cell]]
   this.winner = null
 }
 
 Board.prototype.store = function (x, y, player) {
-  if (this.grid[x][y].value != null) {
-    throw new TypeError("square unavailable")
-  } else {
+  if (this.grid[x][y].value != ("X" || "O")) {
     this.grid[x][y].inputValue(player)
+  } else {
+    throw new TypeError("square unavailable")
   }
-  isGameWon()
+  this.isGameWon()
 };
 
 Board.prototype.isGameWon = function (player) {

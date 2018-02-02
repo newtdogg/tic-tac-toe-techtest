@@ -1,5 +1,5 @@
 function Cell(){
-  this.value = null
+  this.value = NaN
 }
 
 Cell.prototype.inputValue = function (value) {
